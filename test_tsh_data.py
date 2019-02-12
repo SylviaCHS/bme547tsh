@@ -6,13 +6,15 @@ import pytest
                                                   "hyperthyroidism"),
                                                  ([2.5, 1.1, 1.3, 2.7,
                                                    1.9, 2.6, 3.5, 1, 1.4],
-                                                  "Normal thyroid function"),
-                                                 ([6.3, 6.7, 6.3, 7.6, 2.1, 6.9,
-                                                   7.1, 4.1, 7.2, 3.5, 2.9],
+                                                  "normal thyroid function"),
+                                                 ([6.3, 6.7, 6.3,
+                                                   7.6, 2.1, 6.9, 7.1,
+                                                   4.1, 7.2, 3.5, 2.9],
                                                   "hypothyroidism"),
-                                                 (5, "hypothyroidism"),
-                                                 (0.9, "hyperthyroidism"),
-                                                 (2.9, "Normal thyroid function")
+                                                 ([5], "hypothyroidism"),
+                                                 ([0.9], "hyperthyroidism"),
+                                                 ([2.9],
+                                                  "normal thyroid function")
                                                  ])
 def test_diagnose_tsh(test_list, expected):
     from tsh_data import diagnose_tsh
