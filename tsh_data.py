@@ -64,4 +64,18 @@ def input_data():
     with open("test_data.txt") as f:
         for line in f.read().split("\n")[1::4]:  # Extract Age
                 age = line
+    with open("test_data.txt") as f:
+        for line in f.read().split("\n")[2::4]:  # Extract Gender
+                gender = line
+    with open("test_data.txt") as f:
+        for line in f.read().split("\n")[3::4]:  # Extract TSH result
+                tsh = line.split(',')
+                num = [num for num in tsh if isinstance(num, float)]
+                print(num)
+
+
+
+
+if __name__ == "__main__":
+    input_data()
 
