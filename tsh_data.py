@@ -56,11 +56,9 @@ def input_data():
     with open("test_data.txt") as f:
         for line in f.read().split("\n")[::4]:  # Extract Name
             if not line.startswith('END'):
-                name = line.split()
+                name = line.split()  # Split the string by space
                 first = name[0]
                 last = name[1]
-            else:
-                break
     with open("test_data.txt") as f:
         for line in f.read().split("\n")[1::4]:  # Extract Age
                 age = line
@@ -69,13 +67,13 @@ def input_data():
                 gender = line
     with open("test_data.txt") as f:
         for line in f.read().split("\n")[3::4]:  # Extract TSH result
-                tsh = line.split(',')
-                num = [num for num in tsh if isinstance(num, float)]
-                print(num)
+                tsh = line.split(',')   # Split the string by comma
+                results = [float(num) for num in tsh[1::]]  # Ignore the work TSH
+    return first, last, age, gender, results
 
 
 
 
 if __name__ == "__main__":
-    input_data()
+    [first, last, age, gender, results] = input_data()
 
