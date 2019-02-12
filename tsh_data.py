@@ -50,3 +50,18 @@ def diagnose_tsh(results):
     else:
         diagnosis = "normal thyroid function"
     return diagnosis
+
+
+def input_data():
+    with open("test_data.txt") as f:
+        for line in f.read().split("\n")[::4]:  # Extract Name
+            if not line.startswith('END'):
+                name = line.split()
+                first = name[0]
+                last = name[1]
+            else:
+                break
+    with open("test_data.txt") as f:
+        for line in f.read().split("\n")[1::4]:  # Extract Age
+                age = line
+
