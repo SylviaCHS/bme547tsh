@@ -23,6 +23,31 @@ def create_person(first, last, age, gender, diagnosis, results):
 
 
 def diagnose_tsh(results):
+    """Give diagnosis to each patient baseddef create_person(first, last, age, gender, diagnosis, results):
+
+
+    Args:
+        first (str): first name
+        last (str): last name
+        age (float): age
+        gender (str): Female/Male
+        diagnosis (str): whether the patient is "hyperthyroidism",
+                        "hypothyroidism", or has "normal thyroid function"
+        results (list): a list of all the test results
+
+    Returns:
+        dict: the stored patient information
+    """
+    new_person = {"First Name": first,
+                  "Last Name": last,
+                  "Age": age,
+                  "Gender": gender,
+                  "Diagnosis": diagnosis,
+                  "TSH": results}
+    return new_person
+
+
+def diagnose_tsh(results):
     """Give diagnosis to each patient based on his/her TSH test results
 
         - "hyperthyroidism" as defined by any of
@@ -53,37 +78,18 @@ def diagnose_tsh(results):
 
 
 def input_data():
-    first = []
-    last = []
-    age = []
-    gender = []
-    results = []
-    diagnosis = []
     with open("test_data.txt") as f:
-        for line in f.read().split("\n")[::4]:  # Extract Name
-            if not line.startswith('END'):
-                name = line.split()  # Split the string by space
-                first.append(name[0])
-                last.append(name[1])
-    with open("test_data.txt") as f:
-        for line in f.read().split("\n")[1::4]:  # Extract Age
-                age.append(line)
-    with open("test_data.txt") as f:
-        for line in f.read().split("\n")[2::4]:  # Extract Gender
-                gender.append(line)
-    with open("test_data.txt") as f:
-        for line in f.read().split("\n")[3::4]:  # Extract TSH result
-                tsh = line.split(',')   # Split the string by comma
-                number = [float(num) for num in tsh[1::]]  # Ignore the work TSH
-                results.append(number)
-                diagnosis.append(diagnose_tsh(number))
-    return first, last, age, gender, results, diagnosis
-
-
+        i = -1
+        lines = []
+        while (1):  # Go through .txt file to collect patient info
+            lines = []
+            for i in range(i, i+4):  # Read four lines, aka one patient, at a time
+                lines.append(f.readline())
+            print(lines)
+            i += 1
+            if any("END" in s for s in lines): # Break loop when reaching the end
+                break
 
 
 if __name__ == "__main__":
-    [first, last, age, gender, results, diagnosis] = input_data()
-
-    x = create_person(first, last, age, gender, diagnosis, results)
-    print(x)
+    input_data()
