@@ -84,11 +84,30 @@ def input_data():
             lines = []
             for i in range(i, i+4):  # Read four lines, aka one patient, at a time
                 lines.append(f.readline().strip())
-
-            print(lines)
-            i += 1
             if any("END" in s for s in lines):  # Break loop when reaching the end
                 break
+
+            # Name
+            name = lines[0].split()  # Split the string by space
+            first = name[0]
+            last = name[1]
+
+            # Age
+            age = int(lines[1])  # Record age in int
+
+            # Gender
+            gender = lines[2]
+
+            # TSH results
+            tsh = lines[3].split(',')  # Split the string by comma
+            number = [float(num) for num in tsh[1::]]  # Ignore the word TSH
+
+            # Diagnosis
+            diagnosis = diagnose_tsh(number)
+
+            print(first, last, age, gender, number, diagnosis)
+            i += 1
+
 
 
 if __name__ == "__main__":
