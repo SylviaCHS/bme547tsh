@@ -50,3 +50,44 @@ def diagnose_tsh(results):
     else:
         diagnosis = "normal thyroid function"
     return diagnosis
+
+
+def input_data():
+    with open("test_data.txt") as f:
+        i = -1
+        while (1):  # Go through .txt file to collect patient info
+            lines = []
+
+            # Read four lines, aka one patient, at a time
+            for i in range(i, i+4):
+                lines.append(f.readline().strip())
+
+            # Break loop when reaching the end
+            if any("END" in s for s in lines):
+                break
+
+            # Name
+            name = lines[0].split()  # Split the string by space
+            first = name[0]
+            last = name[1]
+
+            # Age
+            age = int(lines[1])  # Record age in int
+
+            # Gender
+            gender = lines[2]
+
+            # TSH results
+            tsh = lines[3].split(',')  # Split the string by comma
+            results = [float(num) for num in tsh[1::]]  # Ignore the word TSH
+            results.sort()
+
+            # Diagnosis
+            diagnosis = diagnose_tsh(results)
+
+            i += 1
+            print(first, last, age, gender, diagnosis, results)
+
+
+if __name__ == "__main__":
+    input_data()
