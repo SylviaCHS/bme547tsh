@@ -53,23 +53,30 @@ def diagnose_tsh(results):
 
 
 def input_data():
+    first = []
+    last = []
+    age = []
+    gender = []
+    results = []
+    diagnosis = []
     with open("test_data.txt") as f:
         for line in f.read().split("\n")[::4]:  # Extract Name
             if not line.startswith('END'):
                 name = line.split()  # Split the string by space
-                first = name[0]
-                last = name[1]
+                first.append(name[0])
+                last.append(name[1])
     with open("test_data.txt") as f:
         for line in f.read().split("\n")[1::4]:  # Extract Age
-                age = line
+                age.append(line)
     with open("test_data.txt") as f:
         for line in f.read().split("\n")[2::4]:  # Extract Gender
-                gender = line
+                gender.append(line)
     with open("test_data.txt") as f:
         for line in f.read().split("\n")[3::4]:  # Extract TSH result
                 tsh = line.split(',')   # Split the string by comma
-                results = [float(num) for num in tsh[1::]]  # Ignore the work TSH
-                diagnosis = diagnose_tsh(results)
+                number = [float(num) for num in tsh[1::]]  # Ignore the work TSH
+                results.append(number)
+                diagnosis.append(diagnose_tsh(number))
     return first, last, age, gender, results, diagnosis
 
 
@@ -79,4 +86,4 @@ if __name__ == "__main__":
     [first, last, age, gender, results, diagnosis] = input_data()
 
     x = create_person(first, last, age, gender, diagnosis, results)
-    print(first)
+    print(x)
