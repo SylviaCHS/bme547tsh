@@ -78,6 +78,19 @@ def diagnose_tsh(results):
 
 
 def input_data():
+    """Give diagnosis to each patient baseddef create_person(first, last, age, gender, diagnosis, results):
+
+
+    Returns:
+        first (str): first name
+        last (str): last name
+        age (float): age
+        gender (str): Female/Male
+        diagnosis (str): whether the patient is "hyperthyroidism",
+                        "hypothyroidism", or has "normal thyroid function"
+        results (list): a list of all the test results
+
+    """
     with open("test_data.txt") as f:
         i = -1
         while (1):  # Go through .txt file to collect patient info
@@ -100,13 +113,15 @@ def input_data():
 
             # TSH results
             tsh = lines[3].split(',')  # Split the string by comma
-            number = [float(num) for num in tsh[1::]]  # Ignore the word TSH
+            results = [float(num) for num in tsh[1::]]  # Ignore the word TSH
+            results.sort()
 
             # Diagnosis
-            diagnosis = diagnose_tsh(number)
+            diagnosis = diagnose_tsh(results)
 
-            print(first, last, age, gender, number, diagnosis)
             i += 1
+            print(first, last, age, gender, diagnosis, results)
+
 
 
 
