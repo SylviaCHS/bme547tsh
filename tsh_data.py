@@ -89,5 +89,17 @@ def input_data():
             print(first, last, age, gender, diagnosis, results)
 
 
+class person:
+    def __init__(self, first, last, age, gender, diagnosis, results):
+        self.firs = first
+        self.last = last
+        self.age = age
+        self.gender = gender
+        self.diagnosis = diagnosis
+        self.results = results
+
+
+
+
 if __name__ == "__main__":
     input_data()
