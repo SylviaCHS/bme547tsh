@@ -17,6 +17,13 @@ import pytest
                                                   "normal thyroid function")
                                                  ])
 def test_diagnose_tsh(test_list, expected):
+    """Unit test module for diagnose_tsh module
+
+    Args:
+        test_list (list): TSH test results
+        expected (str): Diagnosis based on the test results
+
+    """
     from tsh_data import diagnose_tsh
     result = diagnose_tsh(test_list)
     assert result == expected
