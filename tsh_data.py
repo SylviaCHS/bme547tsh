@@ -69,11 +69,14 @@ def input_data():
         for line in f.read().split("\n")[3::4]:  # Extract TSH result
                 tsh = line.split(',')   # Split the string by comma
                 results = [float(num) for num in tsh[1::]]  # Ignore the work TSH
-    return first, last, age, gender, results
+                diagnosis = diagnose_tsh(results)
+    return first, last, age, gender, results, diagnosis
 
 
 
 
 if __name__ == "__main__":
-    [first, last, age, gender, results] = input_data()
+    [first, last, age, gender, results, diagnosis] = input_data()
 
+    x = create_person(first, last, age, gender, diagnosis, results)
+    print(first)
