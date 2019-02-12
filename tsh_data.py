@@ -80,14 +80,14 @@ def diagnose_tsh(results):
 def input_data():
     with open("test_data.txt") as f:
         i = -1
-        lines = []
         while (1):  # Go through .txt file to collect patient info
             lines = []
             for i in range(i, i+4):  # Read four lines, aka one patient, at a time
-                lines.append(f.readline())
+                lines.append(f.readline().strip())
+
             print(lines)
             i += 1
-            if any("END" in s for s in lines): # Break loop when reaching the end
+            if any("END" in s for s in lines):  # Break loop when reaching the end
                 break
 
 
