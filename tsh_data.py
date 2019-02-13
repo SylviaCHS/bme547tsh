@@ -52,6 +52,16 @@ def diagnose_tsh(results):
     return diagnosis
 
 
+def output_data(person):
+    import json
+    first = person["First Name"]
+    last = person["Last Name"]
+    filename = ''.join([first,'-',last,'.json'])
+    out_file = open(filename, "w")
+    json.dump(person, out_file)
+    out_file.close()
+
+
 def input_data():
     with open("test_data.txt") as f:
         i = -1
@@ -88,6 +98,7 @@ def input_data():
             i += 1
             new_person = create_person(first, last, age,
                                        gender, diagnosis, results)
+            output_data(new_person)
 
 
 if __name__ == "__main__":
