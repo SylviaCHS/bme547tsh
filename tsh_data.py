@@ -86,8 +86,9 @@ def input_data():
             diagnosis = diagnose_tsh(results)
 
             i += 1
-            new_person = create_person(first, last, age, gender, diagnosis, results)
-            
+            new_person = create_person(first, last, age,
+                                       gender, diagnosis, results)
+
 
 if __name__ == "__main__":
     input_data()
