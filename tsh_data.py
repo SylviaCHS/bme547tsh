@@ -55,7 +55,7 @@ def diagnose_tsh(results):
 def input_data():
     with open("test_data.txt") as f:
         i = -1
-        while (1):  # Go through .txt file to collect patient info
+        while 1:  # Go through .txt file to collect patient info
             lines = []
 
             # Read four lines, aka one patient, at a time
@@ -86,7 +86,8 @@ def input_data():
             diagnosis = diagnose_tsh(results)
 
             i += 1
-            print(first, last, age, gender, diagnosis, results)
+            new_person = create_person(first, last, age,
+                                       gender, diagnosis, results)
 
 
 if __name__ == "__main__":
