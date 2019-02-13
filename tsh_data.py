@@ -1,5 +1,6 @@
 def create_person(first, last, age, gender, diagnosis, results):
     """Create dictionary with patient's information
+
     Args:
         first (str): first name
         last (str): last name
@@ -8,6 +9,7 @@ def create_person(first, last, age, gender, diagnosis, results):
         diagnosis (str): whether the patient is "hyperthyroidism",
                         "hypothyroidism", or has "normal thyroid function"
         results (list): a list of all the test results
+
     Returns:
         dict: the stored patient information
     """
