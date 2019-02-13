@@ -56,7 +56,7 @@ def output_data(person):
     import json
     first = person["First Name"]
     last = person["Last Name"]
-    filename = ''.join([first,'-',last,'.json'])
+    filename = ''.join([first, '-', last, '.json'])
     out_file = open(filename, "w")
     json.dump(person, out_file)
     out_file.close()
