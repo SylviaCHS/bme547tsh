@@ -1,6 +1,5 @@
 def create_person(first, last, age, gender, diagnosis, results):
-    """Create dictionary of each patient's information
-
+    """Create dictionary with patient's information
     Args:
         first (str): first name
         last (str): last name
@@ -9,9 +8,8 @@ def create_person(first, last, age, gender, diagnosis, results):
         diagnosis (str): whether the patient is "hyperthyroidism",
                         "hypothyroidism", or has "normal thyroid function"
         results (list): a list of all the test results
-
     Returns:
-        new_person (dict): the stored patient information
+        dict: the stored patient information
     """
     new_person = {"First Name": first,
                   "Last Name": last,
@@ -68,18 +66,17 @@ def diagnose_tsh(results):
 def output_data(person):
     """Output each patient's information from dictionary as an .json file
 
+    The function output a file called "FirstName-LastName.json".
+    It contains the following patient's information
+         - First Name
+         - Last Name
+         - Age
+         - Gender
+         - Diagnosis
+         - TSH (in ascending order)
+
     Args:
         person (dict): the stored patient information
-
-    Returns:
-        FirstName-LastName.json: Create a new .json file containing
-                                 the following patient's information
-                                 - First Name
-                                 - Last Name
-                                 - Age
-                                 - Gender
-                                 - Diagnosis
-                                 - TSH (in ascending order)
     """
     import json
     first = person["First Name"]
@@ -91,7 +88,8 @@ def output_data(person):
 
 
 def input_data():
-    """Input patient's information from a .txt file
+    """Input and process patient's information from a .txt file iteratively
+
     The .txt file is in the following format:
     - The first line has the first and last name of
       the patient separated by a space.
@@ -101,13 +99,10 @@ def input_data():
       and then a list of test results separated by commas.
     - The file is ended with the last line having the word "END"
 
-    Args:
-        person (dict): the stored patient information
-
-    Returns:
-        FirstName-LastName.json: Create a new .json file containing
-                                 each patient's information
+    The function process the data using the pre-defined functions. Each
+    patient's info are stored in a dictionary and then saved in JSON format.
     """
+
     with open("test_data.txt") as f:
         i = -1
         while 1:  # Go through .txt file to collect patient info
