@@ -86,20 +86,8 @@ def input_data():
             diagnosis = diagnose_tsh(results)
 
             i += 1
-            print(first, last, age, gender, diagnosis, results)
-
-
-class person:
-    def __init__(self, first, last, age, gender, diagnosis, results):
-        self.firs = first
-        self.last = last
-        self.age = age
-        self.gender = gender
-        self.diagnosis = diagnosis
-        self.results = results
-
-
-
+            new_person = create_person(first, last, age, gender, diagnosis, results)
+            
 
 if __name__ == "__main__":
     input_data()
